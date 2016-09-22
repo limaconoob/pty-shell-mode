@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    mod.rs                                             :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jpepin <jpepin@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/09/21 07:28:07 by jpepin            #+#    #+#              #
-#    Updated: 2016/09/21 07:43:53 by jpepin           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 pub mod mouse;
 pub mod key;
 
@@ -37,10 +25,10 @@ fn info_arrow(buf: &In) -> (u16, u16)
     else
     { for x in nbr
       { if *x < 58
-        { k.0 = (k.0 * (10 as u16)) + (*x as u16) - 48; }
+        { k.0 = (k.0 * (10 as u16)) + (*x as u16) - 48; }
         else
-        { k.1 = *x as u16; }}}}
-    true );
+        { k.1 = *x as u16; }}}
+    true });
   k }
 
 fn info_mouse(buf: &In) -> (u16, u16, u16)
@@ -208,6 +196,7 @@ impl Operate {
               b'S' => Operate::Key(Key::F(16)),
               _ => unimplemented!(),
             }
+          }
           9 => {
             match c.1 {
               b'A' => Operate::Key(Key::AltUp),
@@ -216,6 +205,7 @@ impl Operate {
               b'D' => Operate::Key(Key::AltLeft),
               _ => unimplemented!(),
             }
+          }
           5 => {
             match c.1 {
               b'A' => Operate::Key(Key::CtrlUp),
@@ -224,6 +214,7 @@ impl Operate {
               b'D' => Operate::Key(Key::CtrlLeft),
               _ => unimplemented!(),
             }
+          }
           10 => {
             match c.1 {
               b'A' => Operate::Key(Key::AltShiftUp),
@@ -232,6 +223,7 @@ impl Operate {
               b'D' => Operate::Key(Key::AltShiftLeft),
               _ => unimplemented!(),
             }
+          }
           6 => {
             match c.1 {
               b'A' => Operate::Key(Key::CtrlShiftUp),
